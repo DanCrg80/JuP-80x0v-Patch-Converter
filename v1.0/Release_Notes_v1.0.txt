@@ -1,6 +1,8 @@
-JuP-80x0v Converter by DanCrg
+JuP-80x0v Converter
 
-This software is a private project and can be used by anyone for free.
+© 2025 by DanCrg
+The provision of the app "JuP 80x0v Converter" is solely for private, non-commercial use. Any sale or resale is prohibited.
+
 
 Release Notes v1.0
 ------------------
@@ -14,7 +16,7 @@ Features:
 - Support of .MID .SYX .PAT and .PFM formats
 - Supports Single Patches / Performances as well as Patchbanks A, B, A+B and Performancebanks from both JP8000/JP8080
 - STATUS field informs about the current status of the conversion process / errors / corrupted banks
-- Logfile for each bank with all details about every single JP MIDI value → JUP 8000V value.
+- Logfile for each bank with all details about every single JP MIDI value → JUP 8000V value
 - Curves are not converted linear but interpolated to match the exact behaviour of the Hardware
 - Octave Shift / Part Transpose / FX Settings are generated as text into the comments section
 - FX for Chorus, Flanger, Phaser and Delay are also converted, at least as close as possible (Sync is only converted for Delay)
