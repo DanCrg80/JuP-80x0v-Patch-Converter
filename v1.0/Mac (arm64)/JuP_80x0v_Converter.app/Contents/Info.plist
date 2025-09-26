@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>JuP_80x0v_Converter</string>
+	<key>CFBundleExecutable</key>
+	<string>JuP_80x0v_Converter</string>
+	<key>CFBundleIconFile</key>
+	<string>generated-a8140b14be8410941e1bca5ebba0217ad8361447b15df8a20e31529f90c943c3.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>JuP_80x0v_Converter</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>JuP_80x0v_Converter</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.0.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+</dict>
+</plist>
