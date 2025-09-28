@@ -1,0 +1,89 @@
+JuP-80x0v Converter
+
+© 2025 by DanCrg
+The provision of the app "JuP 80x0v Converter" is solely for private, non-commercial use. Any sale or resale is prohibited.
+
+
+Release Notes v1.1
+------------------
+
+Tested with Arturia JUP-8000V v1.0.0.6114 (arm64)
+
+Fixes:
+
+- All converted Patchbank folders now can just be copy pasted into the Arturia JUP-8000V User Presets Folder.
+  Therefore importing each single .jp8x file through the GUI is not required anymore.
+- Chorus, Flanger, Phaser and Delay Dry/Wet knobs are now also velocity sensitive.
+- Converter GUI has been updated (Fixed Size + "Detecting Bank..." - Status on Mac)
+
+
+Release Notes v1.0
+------------------
+
+Tested with Arturia JUP-8000V v1.0.0.6114 (arm64)
+
+
+Features:
+
+- Runs on Win and Mac
+- Support of .MID .SYX .PAT and .PFM formats
+- Supports Single Patches / Performances as well as Patchbanks A, B, A+B and Performancebanks from both JP8000/JP8080
+- STATUS field informs about the current status of the conversion process / errors / corrupted banks
+- Logfile for each bank with all details about every single JP MIDI value → JUP 8000V value
+- Curves are not converted linear but interpolated to match the exact behaviour of the Hardware
+- Octave Shift / Part Transpose / FX Settings are generated as text into the comments section
+- FX for Chorus, Flanger, Phaser and Delay are also converted, at least as close as possible (Sync is only converted for Delay)
+- If 2 instances of Arturia JUP-8000V are used together in parallel the Patches will not run in SYNC.
+  Workaround: In both instances go to MIDI Settings and assign a MIDI Controller to the LFO "Retrigger".
+              In your DAW insert some empty space before your track and automate this button to ON and back to OFF.
+	      This will sync the two instances.
+- The LFO Fade knob will not affect the LFO PAN (just like on the hardware)
+- Macro Controls 1+2 are used to retain the high resolution of the Fine Tune on Osc2 in Wide Mode
+- Mono and Poly Modes with Glide supported
+- Arpeggio is supported
+- Patches are converted with sufficient headroom to avoid clipping (-24db)
+- The volume of the dry Signal gets increased by 2db (-22db) when the Chorus / Flanger / Phaser goes from 0% to 50% to keep its volume constant 
+
+
+Additional Notes:
+
+MOD-X:
+ In case OSC2 is Square and the PWM / PWM Depth gets increased the X-MOD on the JUP8000V behaves completly different. 
+ Therefore the converter sets OSC2 PW from 50% to 52% and OSC2 PWM Depth from 0% to 12%. This keeps the Sound as close as possible to the original.
+ The lowest value of X-MOD is always 0.025% (for some patches this is required to make the 2 OSCs work together)
+ -> Once Arturia fixes this issue the converter can fully support the original settings.
+
+Osc Common Envelope (Pitch Envelope) Decay:
+  Decay has a bug - after value '65' the value gets reset to 0 and from there increases again.
+  The converter adapts to this bug to make it work properly to not get any wrong Decay.
+ -> Once Arturia fixes this issue the converter also needs to be updated.
+
+JP 8000 FX:
+ Currently JUP 8000V cannot convert any of the JP 8000 Effects because they have not been implemented by Arturia.
+ So the converter uses the available Arturia effects to match as close as possible.
+ Sync for FX is not converted, only for Delay.
+ (On the JP 8000 all effects have sync since these are all implemented internally using 4 delay modules with just different Settings).
+ -> Once Arturia supports the original JP 8000 effects unit the converter can also fully support them.
+
+Velocity on OSC2 Range and OSC2 Fine:
+ Would require an option for a separate velocity curves in advanced section, so it's not 100% accurate (the curve is already used by all other Velocity Sliders).
+ This is mostly fine because usually it's used together with osc sync so the real pitch won't sound off.
+ -> Once Arturia supports an option for separate velocity curves the converter can fully support it. 
+
+OSC Shift / Part Transpose:
+ Not supported by JUP8000V - See in Patch Comment and set octave / semi in DAW or play accordingly.
+ Note: This is intentionally not emulated by changing the OSC1 Oct / OSC2 Coarse knob because
+       then the Filter Keytrack behind would not match anymore.
+ -> Once Arturia supports an Option for the Octave Switch / Part (Patch) Transpose which also takes
+    the Filter Keytrack into Account the converter can fully support it. 
+
+LFO FADE:
+ For PAN LFO the converter does not use the GUI knob because it reacts to the LFO Fade.
+ On the real JP 8000 the PAN LFO is not affected by the LFO Fade and is always running at trigger.
+ So the converter uses Function1 in Advanced section to Control the PAN LFO for now to simulate that (to avoid FADE).
+ -> Once Arturia fixes this issue the converter can fully support it via GUI.
+
+Arp:
+  Arpeggio Modes Up, Down, Up&Down, Random are converted, RPS is also set to Random.
+  Arpeggio Beat Patterns 1/4, 1/6, 1/8, 1/12, 1/16 and 1/32 are converted, others are also set to 1/16.
+
